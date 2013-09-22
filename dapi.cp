@@ -51,8 +51,39 @@ ColorToGray:[module_num:2|svn_version:\'10318\'|variable_revision_number:2|show_
     Relative weight of the channel:1
     Image name\x3A:BlueOriginal
 
-IdentifyPrimaryObjects:[module_num:3|svn_version:\'10826\'|variable_revision_number:8|show_window:True|notes:\x5B\x5D]
+CorrectIlluminationCalculate:[module_num:3|svn_version:\'10458\'|variable_revision_number:2|show_window:False|notes:\x5B\x5D]
     Select the input image:BlueOriginal
+    Name the output image:BlueIllum
+    Select how the illumination function is calculated:Background
+    Dilate objects in the final averaged image?:No
+    Dilation radius:1
+    Block size:10
+    Rescale the illumination function?:No
+    Calculate function for each image individually, or based on all images?:Each
+    Smoothing method:Gaussian Filter
+    Method to calculate smoothing filter size:Automatic
+    Approximate object size:10
+    Smoothing filter size:10
+    Retain the averaged image for use later in the pipeline (for example, in SaveImages)?:No
+    Name the averaged image:IllumBlueAvg
+    Retain the dilated image for use later in the pipeline (for example, in SaveImages)?:No
+    Name the dilated image:IllumBlueDilated
+    Automatically calculate spline parameters?:Yes
+    Background mode:auto
+    Number of spline points:5
+    Background threshold:2
+    Image resampling factor:2
+    Maximum number of iterations:40
+    Residual value for convergence:0.001
+
+CorrectIlluminationApply:[module_num:4|svn_version:\'10300\'|variable_revision_number:3|show_window:False|notes:\x5B\x5D]
+    Select the input image:BlueOriginal
+    Name the output image:BlueCorr
+    Select the illumination function:BlueIllum
+    Select how the illumination function is applied:Subtract
+
+IdentifyPrimaryObjects:[module_num:5|svn_version:\'10826\'|variable_revision_number:8|show_window:False|notes:\x5B\x5D]
+    Select the input image:BlueCorr
     Name the primary objects to be identified:BlueObjects
     Typical diameter of objects, in pixel units (Min,Max):20,60
     Discard objects outside the diameter range?:Yes
@@ -85,7 +116,7 @@ IdentifyPrimaryObjects:[module_num:3|svn_version:\'10826\'|variable_revision_num
     Maximum number of objects:500
     Select the measurement to threshold with:None
 
-GrayToColor:[module_num:4|svn_version:\'10341\'|variable_revision_number:2|show_window:False|notes:\x5B\x5D]
+GrayToColor:[module_num:6|svn_version:\'10341\'|variable_revision_number:2|show_window:False|notes:\x5B\x5D]
     Select a color scheme:RGB
     Select the input image to be colored red:BlueOutlines
     Select the input image to be colored green:Leave this black
@@ -104,7 +135,7 @@ GrayToColor:[module_num:4|svn_version:\'10341\'|variable_revision_number:2|show_
     Relative weight for the brightness image:1
     Select the input image to add to the stacked image:None
 
-SaveImages:[module_num:5|svn_version:\'10822\'|variable_revision_number:7|show_window:False|notes:\x5B\x5D]
+SaveImages:[module_num:7|svn_version:\'10822\'|variable_revision_number:7|show_window:False|notes:\x5B\x5D]
     Select the type of image to save:Image
     Select the image to save:processed
     Select the objects to save:None
@@ -125,7 +156,7 @@ SaveImages:[module_num:5|svn_version:\'10822\'|variable_revision_number:7|show_w
     Store file and path information to the saved image?:No
     Create subfolders in the output folder?:Yes
 
-ExportToSpreadsheet:[module_num:6|svn_version:\'10880\'|variable_revision_number:7|show_window:False|notes:\x5B\x5D]
+ExportToSpreadsheet:[module_num:8|svn_version:\'10880\'|variable_revision_number:7|show_window:False|notes:\x5B\x5D]
     Select or enter the column delimiter:Comma (",")
     Prepend the output file name to the data file names?:No
     Add image metadata columns to your object data file?:Yes
