@@ -57,7 +57,7 @@ CorrectIlluminationCalculate:[module_num:3|svn_version:\'10458\'|variable_revisi
     Select how the illumination function is calculated:Background
     Dilate objects in the final averaged image?:No
     Dilation radius:1
-    Block size:10
+    Block size:15
     Rescale the illumination function?:No
     Calculate function for each image individually, or based on all images?:Each
     Smoothing method:Gaussian Filter
@@ -85,7 +85,7 @@ CorrectIlluminationApply:[module_num:4|svn_version:\'10300\'|variable_revision_n
 IdentifyPrimaryObjects:[module_num:5|svn_version:\'10826\'|variable_revision_number:8|show_window:False|notes:\x5B\x5D]
     Select the input image:BlueCorr
     Name the primary objects to be identified:BlueObjects
-    Typical diameter of objects, in pixel units (Min,Max):20,60
+    Typical diameter of objects, in pixel units (Min,Max):15,60
     Discard objects outside the diameter range?:Yes
     Try to merge too small objects with nearby larger objects?:No
     Discard objects touching the border of the image?:No
@@ -93,8 +93,8 @@ IdentifyPrimaryObjects:[module_num:5|svn_version:\'10826\'|variable_revision_num
     Threshold correction factor:1
     Lower and upper bounds on threshold:0.000000,1.000000
     Approximate fraction of image covered by objects?:0.01
-    Method to distinguish clumped objects:Intensity
-    Method to draw dividing lines between clumped objects:Intensity
+    Method to distinguish clumped objects:Shape
+    Method to draw dividing lines between clumped objects:Shape
     Size of smoothing filter:10
     Suppress local maxima that are closer than this minimum allowed distance:7
     Speed up by using lower-resolution image to find local maxima?:Yes
