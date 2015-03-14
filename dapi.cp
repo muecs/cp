@@ -85,13 +85,13 @@ CorrectIlluminationApply:[module_num:4|svn_version:\'10300\'|variable_revision_n
 IdentifyPrimaryObjects:[module_num:5|svn_version:\'10826\'|variable_revision_number:8|show_window:False|notes:\x5B\x5D]
     Select the input image:BlueCorr
     Name the primary objects to be identified:BlueObjects
-    Typical diameter of objects, in pixel units (Min,Max):15,60
+    Typical diameter of objects, in pixel units (Min,Max):20,60
     Discard objects outside the diameter range?:Yes
     Try to merge too small objects with nearby larger objects?:No
     Discard objects touching the border of the image?:No
     Select the thresholding method:Otsu Global
     Threshold correction factor:1
-    Lower and upper bounds on threshold:0.000000,1.000000
+    Lower and upper bounds on threshold:0.15,1.0
     Approximate fraction of image covered by objects?:0.01
     Method to distinguish clumped objects:Shape
     Method to draw dividing lines between clumped objects:Shape
