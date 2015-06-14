@@ -16,15 +16,13 @@ After a few days in culture, cells were fixed with 4% PFA and immunostained for 
 
 Images were captured using an Olympus BX51 fluorescent microscope with standard filters for DAPI, GFP and Cy3. Images were saved as TIFFs at 300dpi (1392x1040 pixels). Each pipeline scans for `.tif` image files in the specified input folder and contained subfolders. A trailing number in the file name (before the extension) is extracted as variable `<Number>` and the subfolder name is stored as `<Group>` -- these are reflected in the output file (`DATA.csv`). Furthermore, for each input image an output image in PNG format is generated, visualising the extracted data with the purpose of easy manual verification of the data generation process.
 
-dapi.cp
--------
+### dapi.cp
 
 Counts the number of stained nuclei (DAPI, EdU Alexa Fluor 594) in both culture systems for pictures in 20x magnification.
 
 The blue channel of the input image is extracted, illumination correction applied, and nucleic objects detected. The only measurement exported is the count of nuclei.
 
-dapi-edu-aa3/olig2.cp
----------------------
+### dapi-edu-aa3/olig2.cp
 
 Both pipelines quantify the absolute number of cells (as in `dapi.cp`), absolute number of proliferating cells (EdU Alexa Fluor 594), and absolute number of oligodendrocytes (Olig2 or AA3 stained for 488nm, respectively) as in `olig2-aa3.cp`. Furthermore, the amount of proliferating oligodendrocytes (EdU+/Olig2+ or EdU+/AA3+) is identified. Pictures were taken with 20x magnification.
 
@@ -32,23 +30,25 @@ The pipeline extracts red, green and blue channels from the input image and corr
 
 Measurements exported are the counts of identified objects in all channels as well as the proportion of green objects contained within red objects (`Mean_RedObjects_Children_GreenObjects_Count`). To obtain the absolute number of double-positive (red and green) cells this proportion should be multiplied with the absolute number of red objects (`Count_RedObjects`).
 
-myelin.cp
----------
+### myelin.cp
 
 Provides quantitative analysis of axonal density and myelination (as proportion): the axonal marker SMI-31 (568nm) and myelin marker MOG (Z2, 488nm) were stained. This also works for other myelin markers such as MBP and PLP (AA3). Pictures were taken with 10x magnification.
 
 The pipeline extracts both the red and the green channel from the input image. The green channel is corrected for illumination, objects are detected and subsequently filtered for their shape, so that only strings of myelin are left. The red channel only gets a binary threshold applied. Measurements exported are the remaining areas as well as total image area in pixels.
 
-olig2-aa3.cp
-------------
+### olig2-aa3.cp
 
 Analyses the number of OPCs and mature oligodendrocytes, when stained with Olig2 (568nm) and PLP (AA3, 488nm). Pictures were taken with 20x magnification.
 
 The pipeline extracts both the red and the green channel from the input image. The red channel is corrected for illumination, the remaining pixel intensity rescaled, a 25% threshold applied, small features suppressed and remaining objects identified. The green channel gets a threshold applied, myelin strings are suppressed and remaining objects identified. Measurements exported are the counts of identified objects in the red and green channels.
 
-pixel-int-g/r.cp
-----------------
+### pixel-int-g/r.cp
 
 Quantifies pixel intensity in the green or red channel, respectively. This was optimised for gfap-stained astrocytes in myelinating cultures or neurosphere-derived astrocyte cultures in 20x magnification, but can easily be modified (re-set threshold) to be used to analyse any pixel intensity in the green or red channel.
 
 The respective channel is corrected for illumination, a threshold applied and the occupied area measured. Exported measurements are the area occupied as well as the total image area in pixels.
+
+References
+----------
+
+* Linder, M., Thümmler, K. et al: *[Fibroblast growth factor signalling in multiple sclerosis: inhibition of myelination and induction of pro-inflammatory environment by FGF9](http://brain.oxfordjournals.org/content/early/2015/04/22/brain.awv102.long).* In Brain, April 2015.
