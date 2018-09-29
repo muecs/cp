@@ -3,7 +3,7 @@ CellProfiler Pipelines
 
 A collection of pipelines for the [CellProfiler](http://www.cellprofiler.org/) cell image analysis software, developed with the neuroimmunology research group of [Prof C. Linington](http://www.gla.ac.uk/researchinstitutes/iii/staff/christopherlinington/) at the Institute of Infection, Immunity and Inflammation, University of Glasgow, UK.
 
-Copyright (C) 2015 Steve Muecklisch
+Copyright &copy; 2015 Steve Muecklisch
 
 This work is licensed under a [Creative Commons Attribution 3.0 Unported License](http://creativecommons.org/licenses/by/3.0/deed.en_GB).
 
@@ -64,3 +64,5 @@ References
 ----------
 
 * Linder, M., Thümmler, K. et al: *[Fibroblast growth factor signalling in multiple sclerosis: inhibition of myelination and induction of pro-inflammatory environment by FGF9](http://brain.oxfordjournals.org/content/early/2015/04/22/brain.awv102.long).* In Brain, April 2015.
+
+* Cumberworth, SL. et al: *[Zika virus tropism and interactions in myelinating neural cell cultures: CNS cells and myelin are preferentially affected.](https://actaneurocomms.biomedcentral.com/articles/10.1186/s40478-017-0450-8)* In Acta Neuropathologica Communications, June 2017.
