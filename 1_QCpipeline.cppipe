@@ -1,0 +1,334 @@
+CellProfiler Pipeline: http://www.cellprofiler.org
+Version:3
+DateRevision:20140124151645
+GitHash:0c7fb94
+ModuleCount:12
+HasImagePlaneDetails:False
+
+Images:[module_num:1|svn_version:\'Unknown\'|variable_revision_number:2|show_window:False|notes:\x5B\'To begin creating your project, use the Images module to compile a list of files and/or folders that you want to analyze. You can also specify a set of rules to include only the desired files in your selected folders.\', \'---\', \'Drag and drop the ExampleSBSImages folder into the File list panel.\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True]
+    :
+    Filter images?:Images only
+    Select the rule criteria:and (extension does isimage) (directory doesnot startwith ".")
+
+Metadata:[module_num:2|svn_version:\'Unknown\'|variable_revision_number:4|show_window:False|notes:\x5B\'The Metadata module optionally allows you to extract information describing your images (i.e, metadata) which will be stored along with your measurements. This information can be contained in the file name and/or location, or in an external file.\', \'---\', "Here, we use regular expressions to extract the well ID from each file. If the row and column are specified using the metadata tags \'WellRow\' and \'WellColumn\', respectively, CellProfiler will put them together to form a new tag called \'Well\'."\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True]
+    Extract metadata?:Yes
+    Metadata data type:Text
+    Metadata types:{}
+    Extraction method count:1
+    Metadata extraction method:Extract from file/folder names
+    Metadata source:File name
+    Regular expression:(?P<WellRow>\x5BA-H\x5D) - (?P<WellColumn>\x5B0-9\x5D{1}) fld (?P<Field>\x5B0-6\x5D)
+    Regular expression:(?P<Date>\x5B0-9\x5D{4}_\x5B0-9\x5D{2}_\x5B0-9\x5D{2})$
+    Extract metadata from:Images matching a rule
+    Select the filtering criteria:or (file does contain ".tif")
+    Metadata file location:
+    Match file and image metadata:\x5B\x5D
+    Use case insensitive matching?:No
+
+NamesAndTypes:[module_num:3|svn_version:\'Unknown\'|variable_revision_number:5|show_window:False|notes:\x5B\'The NamesAndTypes module allows you to assign a meaningful name to each image by which other modules will refer to it.\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True]
+    Assign a name to:Images matching rules
+    Select the image type:Grayscale image
+    Name to assign these images:DNA
+    Match metadata:\x5B{u\'OrigMyelin\'\x3A u\'WellColumn\', u\'Brightfield\'\x3A u\'WellColumn\', u\'OrigAxon\'\x3A u\'WellColumn\', u\'OrigDAPI\'\x3A u\'WellColumn\'}, {u\'OrigMyelin\'\x3A u\'WellRow\', u\'Brightfield\'\x3A u\'WellRow\', u\'OrigAxon\'\x3A u\'WellRow\', u\'OrigDAPI\'\x3A u\'WellRow\'}, {u\'OrigMyelin\'\x3A u\'Field\', u\'Brightfield\'\x3A u\'Field\', u\'OrigAxon\'\x3A u\'Field\', u\'OrigDAPI\'\x3A u\'Field\'}\x5D
+    Image set matching method:Metadata
+    Set intensity range from:Image metadata
+    Assignments count:4
+    Single images count:0
+    Select the rule criteria:or (file does contain "DAPI - DAPI).tif")
+    Name to assign these images:OrigDAPI
+    Name to assign these objects:Cell
+    Select the image type:Grayscale image
+    Set intensity range from:Image metadata
+    Retain outlines of loaded objects?:No
+    Name the outline image:LoadedObjects
+    Select the rule criteria:or (file does contain "FITC).tif")
+    Name to assign these images:OrigMyelin
+    Name to assign these objects:Nucleus
+    Select the image type:Grayscale image
+    Set intensity range from:Image metadata
+    Retain outlines of loaded objects?:No
+    Name the outline image:LoadedObjects
+    Select the rule criteria:or (file does contain "TexasRed).tif")
+    Name to assign these images:OrigAxon
+    Name to assign these objects:Cytoplasm
+    Select the image type:Grayscale image
+    Set intensity range from:Image metadata
+    Retain outlines of loaded objects?:No
+    Name the outline image:LoadedOutlines
+    Select the rule criteria:and (file does contain "Brightfield - DAPI).tif")
+    Name to assign these images:Brightfield
+    Name to assign these objects:Speckle
+    Select the image type:Grayscale image
+    Set intensity range from:Image metadata
+    Retain outlines of loaded objects?:No
+    Name the outline image:LoadedOutlines
+
+Groups:[module_num:4|svn_version:\'Unknown\'|variable_revision_number:2|show_window:False|notes:\x5B\'The Groups module optionally allows you to split your list of images into image subsets (groups) which will be processed independently of each other. Examples of groupings include screening batches, microtiter plates, time-lapse movies, etc.\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True]
+    Do you want to group your images?:No
+    grouping metadata count:1
+    Metadata category:None
+
+IdentifyPrimaryObjects:[module_num:5|svn_version:\'Unknown\'|variable_revision_number:10|show_window:False|notes:\x5B\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True]
+    Select the input image:OrigDAPI
+    Name the primary objects to be identified:Nuclei
+    Typical diameter of objects, in pixel units (Min,Max):8,20
+    Discard objects outside the diameter range?:Yes
+    Try to merge too small objects with nearby larger objects?:No
+    Discard objects touching the border of the image?:No
+    Method to distinguish clumped objects:Intensity
+    Method to draw dividing lines between clumped objects:Intensity
+    Size of smoothing filter:10
+    Suppress local maxima that are closer than this minimum allowed distance:7.0
+    Speed up by using lower-resolution image to find local maxima?:Yes
+    Name the outline image:PrimaryOutlines
+    Fill holes in identified objects?:Yes
+    Automatically calculate size of smoothing filter for declumping?:Yes
+    Automatically calculate minimum allowed distance between local maxima?:Yes
+    Retain outlines of the identified objects?:No
+    Automatically calculate the threshold using the Otsu method?:Yes
+    Enter Laplacian of Gaussian threshold:0.5
+    Automatically calculate the size of objects for the Laplacian of Gaussian filter?:Yes
+    Enter LoG filter diameter:5.0
+    Handling of objects if excessive number of objects identified:Continue
+    Maximum number of objects:500
+    Threshold setting version:1
+    Threshold strategy:Global
+    Thresholding method:Background
+    Select the smoothing method for thresholding:Automatic
+    Threshold smoothing scale:50
+    Threshold correction factor:1.2
+    Lower and upper bounds on threshold:0.001,1.0
+    Approximate fraction of image covered by objects?:0.01
+    Manual threshold:0.10
+    Select the measurement to threshold with:None
+    Select binary image:None
+    Masking objects:None
+    Two-class or three-class thresholding?:Three classes
+    Minimize the weighted variance or the entropy?:Weighted variance
+    Assign pixels in the middle intensity class to the foreground or the background?:Foreground
+    Method to calculate adaptive window size:Image size
+    Size of adaptive window:10
+
+CalculateMath:[module_num:6|svn_version:\'Unknown\'|variable_revision_number:2|show_window:False|notes:\x5B\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True]
+    Name the output measurement:MeasurementNuclei
+    Operation:None
+    Select the numerator measurement type:Object
+    Select the numerator objects:Nuclei
+    Select the numerator measurement:Number_Object_Number
+    Multiply the above operand by:1.0
+    Raise the power of above operand by:1.0
+    Select the second operand measurement type:Image
+    Select the second operand objects:None
+    Select the second operand measurement:None
+    Multiply the above operand by:1.0
+    Raise the power of above operand by:1.0
+    Take log10 of result?:No
+    Multiply the result by:1.0
+    Raise the power of result by:1.0
+    Add to the result:0.0
+    Constrain the result to a lower bound?:No
+    Enter the lower bound:0.0
+    Constrain the result to an upper bound?:No
+    Enter the upper bound:1.0
+
+ApplyThreshold:[module_num:7|svn_version:\'Unknown\'|variable_revision_number:7|show_window:False|notes:\x5B\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True]
+    Select the input image:OrigAxon
+    Name the output image:ThreshAxon
+    Select the output image type:Binary (black and white)
+    Set pixels below or above the threshold to zero?:Below threshold
+    Subtract the threshold value from the remaining pixel intensities?:No
+    Number of pixels by which to expand the thresholding around those excluded bright pixels:0.0
+    Threshold setting version:1
+    Threshold strategy:Global
+    Thresholding method:Otsu
+    Select the smoothing method for thresholding:No smoothing
+    Threshold smoothing scale:1.0
+    Threshold correction factor:1.1
+    Lower and upper bounds on threshold:0.05,1.0
+    Approximate fraction of image covered by objects?:0.01
+    Manual threshold:0.0
+    Select the measurement to threshold with:None
+    Select binary image:None
+    Masking objects:None
+    Two-class or three-class thresholding?:Three classes
+    Minimize the weighted variance or the entropy?:Weighted variance
+    Assign pixels in the middle intensity class to the foreground or the background?:Foreground
+    Method to calculate adaptive window size:Image size
+    Size of adaptive window:10
+
+MeasureImageAreaOccupied:[module_num:8|svn_version:\'Unknown\'|variable_revision_number:3|show_window:False|notes:\x5B\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True]
+    Hidden:1
+    Measure the area occupied in a binary image, or in objects?:Binary Image
+    Select objects to measure:None
+    Retain a binary image of the object regions?:No
+    Name the output binary image:Stain
+    Select a binary image to measure:ThreshAxon
+
+MeasureImageQuality:[module_num:9|svn_version:\'Unknown\'|variable_revision_number:5|show_window:False|notes:\x5B\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True]
+    Calculate metrics for which images?:All loaded images
+    Image count:1
+    Scale count:3
+    Threshold count:3
+    Select the images to measure:OrigDAPI,OrigMyelin
+    Include the image rescaling value?:Yes
+    Calculate blur metrics?:Yes
+    Spatial scale for blur measurements:10
+    Spatial scale for blur measurements:20
+    Spatial scale for blur measurements:100
+    Calculate saturation metrics?:Yes
+    Calculate intensity metrics?:Yes
+    Calculate thresholds?:No
+    Use all thresholding methods?:No
+    Select a thresholding method:Otsu
+    Typical fraction of the image covered by objects:0.1
+    Two-class or three-class thresholding?:Two classes
+    Minimize the weighted variance or the entropy?:Weighted variance
+    Assign pixels in the middle intensity class to the foreground or the background?:Foreground
+    Select a thresholding method:Otsu
+    Typical fraction of the image covered by objects:0.1
+    Two-class or three-class thresholding?:Three classes
+    Minimize the weighted variance or the entropy?:Weighted variance
+    Assign pixels in the middle intensity class to the foreground or the background?:Foreground
+    Select a thresholding method:Otsu
+    Typical fraction of the image covered by objects:0.1
+    Two-class or three-class thresholding?:Three classes
+    Minimize the weighted variance or the entropy?:Weighted variance
+    Assign pixels in the middle intensity class to the foreground or the background?:Background
+
+FlagImage:[module_num:10|svn_version:\'Unknown\'|variable_revision_number:4|show_window:False|notes:\x5B\'Flag image if any of the following criteria are met\', \'1. PLLS <-2.0 Axon image\', \'2. PLLS <-2.0 Myelin image\', \'3. nuclei count below 1500\', \'4. axon density below 40%\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True]
+    Hidden:1
+    Hidden:4
+    Name the flag\'s category:Metadata
+    Name the flag:QCFlag
+    Flag if any, or all, measurement(s) fails to meet the criteria?:Flag if any fail
+    Skip image set if flagged?:No
+    Flag is based on:Whole-image measurement
+    Select the object to be used for flagging:Nuclei
+    Which measurement?:ImageQuality_PowerLogLogSlope_OrigAxon
+    Flag images based on low values?:Yes
+    Minimum value:-2.0
+    Flag images based on high values?:No
+    Maximum value:1.0
+    Rules file location:Elsewhere...\x7C
+    Rules file name:rules.txt
+    Class number:
+    Flag is based on:Whole-image measurement
+    Select the object to be used for flagging:None
+    Which measurement?:ImageQuality_PowerLogLogSlope_OrigMyelin
+    Flag images based on low values?:Yes
+    Minimum value:-2.0
+    Flag images based on high values?:No
+    Maximum value:1.0
+    Rules file location:Elsewhere...\x7C
+    Rules file name:rules.txt
+    Class number:
+    Flag is based on:Whole-image measurement
+    Select the object to be used for flagging:None
+    Which measurement?:Count_Nuclei
+    Flag images based on low values?:Yes
+    Minimum value:1500
+    Flag images based on high values?:No
+    Maximum value:1.0
+    Rules file location:Elsewhere...\x7C
+    Rules file name:rules.txt
+    Class number:
+    Flag is based on:Whole-image measurement
+    Select the object to be used for flagging:None
+    Which measurement?:AreaOccupied_AreaOccupied_ThreshAxon
+    Flag images based on low values?:Yes
+    Minimum value:1700000
+    Flag images based on high values?:No
+    Maximum value:1.0
+    Rules file location:Elsewhere...\x7C
+    Rules file name:rules.txt
+    Class number:
+
+ExportToSpreadsheet:[module_num:11|svn_version:\'Unknown\'|variable_revision_number:9|show_window:False|notes:\x5B\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True]
+    Select the column delimiter:Comma (",")
+    Add image metadata columns to your object data file?:No
+    Limit output to a size that is allowed in Excel?:No
+    Select the measurements to export:Yes
+    Calculate the per-image mean values for object measurements?:No
+    Calculate the per-image median values for object measurements?:No
+    Calculate the per-image standard deviation values for object measurements?:No
+    Output file location:Default Input Folder\x7C
+    Create a GenePattern GCT file?:No
+    Select source of sample row name:Metadata
+    Select the image to use as the identifier:None
+    Select the metadata to use as the identifier:None
+    Export all measurement types?:No
+    Press button to select measurements to export:Image\x7CCount_Nuclei,Image\x7CAreaOccupied_AreaOccupied_ThreshAxon,Image\x7CAreaOccupied_TotalArea_ThreshAxon,Image\x7CImageQuality_MinIntensity_OrigMyelin,Image\x7CImageQuality_MinIntensity_OrigAxon,Image\x7CImageQuality_MinIntensity_OrigDAPI,Image\x7CImageQuality_TotalIntensity_OrigMyelin,Image\x7CImageQuality_TotalIntensity_OrigAxon,Image\x7CImageQuality_TotalIntensity_OrigDAPI,Image\x7CImageQuality_PowerLogLogSlope_OrigMyelin,Image\x7CImageQuality_PowerLogLogSlope_OrigAxon,Image\x7CImageQuality_PowerLogLogSlope_OrigDAPI,Image\x7CImageQuality_PercentMaximal_OrigMyelin,Image\x7CImageQuality_PercentMaximal_OrigAxon,Image\x7CImageQuality_PercentMaximal_OrigDAPI,Image\x7CImageQuality_PercentMinimal_OrigMyelin,Image\x7CImageQuality_PercentMinimal_OrigAxon,Image\x7CImageQuality_PercentMinimal_OrigDAPI,Image\x7CImageQuality_FocusScore_OrigMyelin,Image\x7CImageQuality_FocusScore_OrigAxon,Image\x7CImageQuality_FocusScore_OrigDAPI,Image\x7CImageQuality_MaxIntensity_OrigMyelin,Image\x7CImageQuality_MaxIntensity_OrigAxon,Image\x7CImageQuality_MaxIntensity_OrigDAPI,Image\x7CImageQuality_TotalArea_OrigMyelin,Image\x7CImageQuality_TotalArea_OrigAxon,Image\x7CImageQuality_TotalArea_OrigDAPI,Image\x7CFileName_OrigMyelin,Image\x7CFileName_Brightfield,Image\x7CFileName_OrigAxon,Image\x7CFileName_OrigDAPI,Image\x7CMetadata_QCFlag,Image\x7CMetadata_WellRow,Image\x7CMetadata_Well,Image\x7CMetadata_Field,Image\x7CMetadata_WellColumn
+    Representation of Nan/Inf:NaN
+    Data to export:Image
+    Combine these object measurements with those of the previous object?:No
+    File name:DATA.csv
+    Use the object name for the file name?:Yes
+
+ExportToDatabase:[module_num:12|svn_version:\'Unknown\'|variable_revision_number:25|show_window:False|notes:\x5B\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True]
+    Database type:SQLite
+    Database name:DefaultDB
+    Add a prefix to table names?:No
+    Table prefix:MyExpt_
+    SQL file prefix:SQL_
+    Output file location:Default Input Folder\x7C
+    Create a CellProfiler Analyst properties file?:Yes
+    Database host:
+    Username:
+    Password:
+    Name the SQLite database file:DefaultDB.db
+    Calculate the per-image mean values of object measurements?:No
+    Calculate the per-image median values of object measurements?:No
+    Calculate the per-image standard deviation values of object measurements?:No
+    Calculate the per-well mean values of object measurements?:No
+    Calculate the per-well median values of object measurements?:No
+    Calculate the per-well standard deviation values of object measurements?:No
+    Export measurements for all objects to the database?:All
+    Select the objects:
+    Maximum # of characters in a column name:64
+    Create one table per object, a single object table or a single object view?:Single object table
+    Enter an image url prepend if you plan to access your files via http:
+    Write image thumbnails directly to the database?:Yes
+    Select the images for which you want to save thumbnails:OrigAxon,OrigDAPI,OrigMyelin
+    Auto-scale thumbnail pixel intensities?:Yes
+    Select the plate type:96
+    Select the plate metadata:None
+    Select the well metadata:Well
+    Include information for all images, using default values?:No
+    Properties image group count:3
+    Properties group field count:1
+    Properties filter field count:1
+    Workspace measurement count:1
+    Experiment name:MyExpt
+    Which objects should be used for locations?:Nuclei
+    Enter a phenotype class table name if using the classifier tool:
+    Export object relationships?:No
+    Overwrite without warning?:Data only
+    Select an image to include:OrigDAPI
+    Use the image name for the display?:Yes
+    Image name:Channel1
+    Channel color:blue
+    Select an image to include:OrigAxon
+    Use the image name for the display?:Yes
+    Image name:Channel2
+    Channel color:red
+    Select an image to include:OrigMyelin
+    Use the image name for the display?:Yes
+    Image name:Channel3
+    Channel color:green
+    Do you want to add group fields?:No
+    Enter the name of the group:
+    Enter the per-image columns which define the group, separated by commas:ImageNumber, Image_Metadata_Plate, Image_Metadata_Well
+    Do you want to add filter fields?:No
+    Automatically create a filter for each plate?:No
+    Enter the name of the filter:
+    Enter the MySQL WHERE clause to define a filter:
+    Create a CellProfiler Analyst workspace file?:No
+    Select the measurement display tool:ScatterPlot
+    Type of measurement to plot on the X-axis:Image
+    Enter the object name:None
+    Select the X-axis measurement:None
+    Select the X-axis index:ImageNumber
+    Type of measurement to plot on the Y-axis:Image
+    Enter the object name:None
+    Select the Y-axis measurement:None
+    Select the Y-axis index:ImageNumber

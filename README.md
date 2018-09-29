@@ -16,13 +16,13 @@ After a few days in culture, cells were fixed with 4% PFA and immunostained for 
 
 Images were captured using an Olympus BX51 fluorescent microscope with standard filters for DAPI, GFP and Cy3. Images were saved as TIFFs at 300dpi (1392x1040 pixels). Each pipeline scans for `.tif` image files in the specified input folder and contained subfolders. A trailing number in the file name (before the extension) is extracted as variable `<Number>` and the subfolder name is stored as `<Group>` -- these are reflected in the output file (`DATA.csv`). Furthermore, for each input image an output image in PNG format is generated, visualising the extracted data with the purpose of easy manual verification of the data generation process.
 
-### dapi.cp
+### [dapi.cp](dapi.cp)
 
 Counts the number of stained nuclei (DAPI, EdU Alexa Fluor 594) in both culture systems for pictures in 20x magnification.
 
 The blue channel of the input image is extracted, illumination correction applied, and nucleic objects detected. The only measurement exported is the count of nuclei.
 
-### dapi-edu-aa3/olig2.cp
+### [dapi-edu-aa3](dapi-edu-aa3.cp)/[olig2.cp](olig2.cp)
 
 Both pipelines quantify the absolute number of cells (as in `dapi.cp`), absolute number of proliferating cells (EdU Alexa Fluor 594), and absolute number of oligodendrocytes (Olig2 or AA3 stained for 488nm, respectively) as in `olig2-aa3.cp`. Furthermore, the amount of proliferating oligodendrocytes (EdU+/Olig2+ or EdU+/AA3+) is identified. Pictures were taken with 20x magnification.
 
@@ -30,23 +30,35 @@ The pipeline extracts red, green and blue channels from the input image and corr
 
 Measurements exported are the counts of identified objects in all channels as well as the proportion of green objects contained within red objects (`Mean_RedObjects_Children_GreenObjects_Count`). To obtain the absolute number of double-positive (red and green) cells this proportion should be multiplied with the absolute number of red objects (`Count_RedObjects`).
 
-### myelin.cp
+### [myelin.cp](myelin.cp)
 
 Provides quantitative analysis of axonal density and myelination (as proportion): the axonal marker SMI-31 (568nm) and myelin marker MOG (Z2, 488nm) were stained. This also works for other myelin markers such as MBP and PLP (AA3). Pictures were taken with 10x magnification.
 
 The pipeline extracts both the red and the green channel from the input image. The green channel is corrected for illumination, objects are detected and subsequently filtered for their shape, so that only strings of myelin are left. The red channel only gets a binary threshold applied. Measurements exported are the remaining areas as well as total image area in pixels.
 
-### olig2-aa3.cp
+### [olig2-aa3.cp](olig2-aa3.cp)
 
 Analyses the number of OPCs and mature oligodendrocytes, when stained with Olig2 (568nm) and PLP (AA3, 488nm). Pictures were taken with 20x magnification.
 
 The pipeline extracts both the red and the green channel from the input image. The red channel is corrected for illumination, the remaining pixel intensity rescaled, a 25% threshold applied, small features suppressed and remaining objects identified. The green channel gets a threshold applied, myelin strings are suppressed and remaining objects identified. Measurements exported are the counts of identified objects in the red and green channels.
 
-### pixel-int-g/r.cp
+### [pixel-int-g](pixel-int-g.cp)/[r.cp](pixel-int-r.cp)
 
 Quantifies pixel intensity in the green or red channel, respectively. This was optimised for gfap-stained astrocytes in myelinating cultures or neurosphere-derived astrocyte cultures in 20x magnification, but can easily be modified (re-set threshold) to be used to analyse any pixel intensity in the green or red channel.
 
 The respective channel is corrected for illumination, a threshold applied and the occupied area measured. Exported measurements are the area occupied as well as the total image area in pixels.
+
+### High-throughput 96 Well Pipelines
+
+The following pipelines have been designed/modified by Dr. Silvia Bijland, in work funded by NC3Rs (grant Ref. B004-13.1) and the UK MS Society (grant ref. 991), under the supervision of Dr. Julia Edgar for the study: *"Functional characterisation of a murine in vitro model of CNS white matter and its utility as an experimental tool"* at the University of Glasgow and are based on `dapi.cp` and `myelin.cp`. For set up of mouse myelinating cultures and imaging refer to the above mentioned study.
+
+Images were measured with the *In Cell Analyzer 2000* using the following 4 channels: Dapi (Hoechst), Fitch (green), TexasRed (red) and Brightfield at 10X magnification and 6 fixed fields per well.
+
+Image processing using CellProfiler:
+1. Quality control pipeline ([1_QCpipeline.cppipe](1_QCpipeline.cppipe)) will automatically flag images that do not meet any of the following criteria: Nuclei count > 1500, Axon area > 40%, PLLS < -2.0 and images that pass get 0, images that fail get 1.
+2. Sort pipeline ([2_sortIMAGESpipeline.cppipe](2_sortIMAGESpipeline.cppipe)), where files with extension `*_0.tif` passed QC, files with extension `*_1.tif` failed QC
+3. Illumination correction calculation ([3_calcILLUMpipeline.cppipe](3_calcILLUMpipeline.cppipe))
+4. Analyse pictures ([4_PROCESSINGpipeline.cppipe](4_PROCESSINGpipeline.cppipe)) will generate a `.png` file of the resulting images and an Excel file containing: Nuclei count, axon area, myelin area, total area, filename and well info.
 
 References
 ----------
