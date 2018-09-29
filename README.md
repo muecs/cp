@@ -16,8 +16,9 @@ Images were captured using an Olympus BX51 fluorescent microscope with standard 
 
 Counts the number of stained nuclei (DAPI, EdU Alexa Fluor 594) in both culture systems for pictures in 20x magnification.
 
-[![DAPI original](images/dapi-gfap_orig_t.png)](images/dapi-gfap_orig.png)
-[![DAPI processed](images/dapi_processed_t.png)](images/dapi_processed.png)
+[![DAPI original](images/dapi-gfap_orig_t.png)](images/dapi-gfap_orig.png) | [![DAPI processed](images/dapi_processed_t.png)](images/dapi_processed.png)
+---|---
+Original | Processed
 
 The blue channel of the input image is extracted, illumination correction applied, and nucleic objects detected. The only measurement exported is the count of nuclei.
 
@@ -33,8 +34,9 @@ Measurements exported are the counts of identified objects in all channels as we
 
 Provides quantitative analysis of axonal density and myelination (as proportion): the axonal marker SMI-31 (568nm) and myelin marker MOG (Z2, 488nm) were stained. This also works for other myelin markers such as MBP and PLP (AA3). Pictures were taken with 10x magnification.
 
-[![Myelin original](images/myelin_orig_t.png)](images/myelin_orig.png)
-[![Myelin processed](images/myelin_processed_t.png)](images/myelin_processed.png) 
+[![Myelin original](images/myelin_orig_t.png)](images/myelin_orig.png) | [![Myelin processed](images/myelin_processed_t.png)](images/myelin_processed.png)
+---|---
+Original | Processed
 
 The pipeline extracts both the red and the green channel from the input image. The green channel is corrected for illumination, objects are detected and subsequently filtered for their shape, so that only strings of myelin are left. The red channel only gets a binary threshold applied. Measurements exported are the remaining areas as well as total image area in pixels.
 
@@ -42,8 +44,9 @@ The pipeline extracts both the red and the green channel from the input image. T
 
 Analyses the number of OPCs and mature oligodendrocytes, when stained with Olig2 (568nm) and PLP (AA3, 488nm). Pictures were taken with 20x magnification.
 
-[![Olig2/AA3 original](images/olig2-aa3_orig_t.png)](images/olig2-aa3_orig.png)
-[![Olig2/AA3 processed](images/olig2-aa3_processed_t.png)](images/olig2-aa3_processed.png) 
+[![Olig2/AA3 original](images/olig2-aa3_orig_t.png)](images/olig2-aa3_orig.png) | [![Olig2/AA3 processed](images/olig2-aa3_processed_t.png)](images/olig2-aa3_processed.png)
+---|---
+Original | Processed
 
 The pipeline extracts both the red and the green channel from the input image. The red channel is corrected for illumination, the remaining pixel intensity rescaled, a 25% threshold applied, small features suppressed and remaining objects identified. The green channel gets a threshold applied, myelin strings are suppressed and remaining objects identified. Measurements exported are the counts of identified objects in the red and green channels.
 
@@ -51,8 +54,9 @@ The pipeline extracts both the red and the green channel from the input image. T
 
 Quantifies pixel intensity in the green or red channel, respectively. This was optimised for gfap-stained astrocytes in myelinating cultures or neurosphere-derived astrocyte cultures in 20x magnification, but can easily be modified (re-set threshold) to be used to analyse any pixel intensity in the green or red channel.
 
-[![GFAP original](images/dapi-gfap_orig_t.png)](images/dapi-gfap_orig.png)
-[![GFAP processed](images/gfap_processed_t.png)](images/gfap_processed.png)
+[![GFAP original](images/dapi-gfap_orig_t.png)](images/dapi-gfap_orig.png) | [![GFAP processed](images/gfap_processed_t.png)](images/gfap_processed.png)
+---|---
+Original | Processed
 
 The respective channel is corrected for illumination, a threshold applied and the occupied area measured. Exported measurements are the area occupied as well as the total image area in pixels.
 
