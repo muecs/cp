@@ -3,10 +3,6 @@ CellProfiler Pipelines
 
 A collection of pipelines for the [CellProfiler](http://www.cellprofiler.org/) cell image analysis software, developed with the neuroimmunology research group of [Prof C. Linington](http://www.gla.ac.uk/researchinstitutes/iii/staff/christopherlinington/) at the Institute of Infection, Immunity and Inflammation, University of Glasgow, UK.
 
-Copyright &copy; 2015 Steve Muecklisch
-
-This work is licensed under a [Creative Commons Attribution 3.0 Unported License](http://creativecommons.org/licenses/by/3.0/deed.en_GB).
-
 Context
 -------
 
@@ -14,7 +10,7 @@ These pipelines are used to characterise different glial cell cultures to quanti
 
 After a few days in culture, cells were fixed with 4% PFA and immunostained for different markers. Primary antibodies used were the following: SMI-31 (1:1500, Abcam), Z2 (anti-MOG, 1:200, clone Z2), PLP/AA3 (1:100, hybridoma supernatant supplied by S. Barnett), MBP (1:100, Millipore), Olig2 (1:1000, Millipore), and GFAP (1:500, Dako). Bound antibodies were visualized using appropriate combinations of species/isotype specific fluorochrome-conjugated secondary antibodies (1:500, Invitrogen, either 488nm or 568nm), followed by mounting in a media containing DAPI. To analyse cell proliferation, cells were pulsed with EdU and stained using the Click-iT EdU Alexa Fluor 594 Kit following the manufacturer's instructions.
 
-Images were captured using an Olympus BX51 fluorescent microscope with standard filters for DAPI, GFP and Cy3. Images were saved as TIFFs at 300dpi (1392x1040 pixels). Each pipeline scans for `.tif` image files in the specified input folder and contained subfolders. A trailing number in the file name (before the extension) is extracted as variable `<Number>` and the subfolder name is stored as `<Group>` -- these are reflected in the output file (`DATA.csv`). Furthermore, for each input image an output image in PNG format is generated, visualising the extracted data with the purpose of easy manual verification of the data generation process.
+Images were captured using an Olympus BX51 fluorescent microscope with standard filters for DAPI, GFP and Cy3. Images were saved as TIFFs at 300dpi (1392x1040 pixels). Each pipeline scans for `.tif` image files in the specified input folder and contained subfolders. A trailing number in the file name (before the extension) is extracted as variable `<Number>` and the subfolder name is stored as `<Group>` &ndash; these are reflected in the output file (`DATA.csv`). Furthermore, for each input image an output image in PNG format is generated, visualising the extracted data with the purpose of easy manual verification of the data generation process.
 
 ### [dapi.cp](dapi.cp)
 
@@ -25,7 +21,7 @@ Counts the number of stained nuclei (DAPI, EdU Alexa Fluor 594) in both culture 
 
 The blue channel of the input image is extracted, illumination correction applied, and nucleic objects detected. The only measurement exported is the count of nuclei.
 
-### [dapi-edu-aa3](dapi-edu-aa3.cp)/[olig2.cp](olig2.cp)
+### [dapi-edu-aa3](dapi-edu-aa3.cp)/[olig2.cp](dapi-edu-olig2.cp)
 
 Both pipelines quantify the absolute number of cells (as in `dapi.cp`), absolute number of proliferating cells (EdU Alexa Fluor 594), and absolute number of oligodendrocytes (Olig2 or AA3 stained for 488nm, respectively) as in `olig2-aa3.cp`. Furthermore, the amount of proliferating oligodendrocytes (EdU+/Olig2+ or EdU+/AA3+) is identified. Pictures were taken with 20x magnification.
 
@@ -78,3 +74,10 @@ References
 * Linder, M., Thümmler, K. et al: *[Fibroblast growth factor signalling in multiple sclerosis: inhibition of myelination and induction of pro-inflammatory environment by FGF9](http://brain.oxfordjournals.org/content/early/2015/04/22/brain.awv102.long).* In Brain, April 2015.
 
 * Cumberworth, SL. et al: *[Zika virus tropism and interactions in myelinating neural cell cultures: CNS cells and myelin are preferentially affected.](https://actaneurocomms.biomedcentral.com/articles/10.1186/s40478-017-0450-8)* In Acta Neuropathologica Communications, June 2017.
+
+License
+-------
+
+Copyright &copy; 2015 Steve Mücklisch
+
+This work is licensed under a [Creative Commons Attribution 3.0 Unported License](http://creativecommons.org/licenses/by/3.0/deed.en_GB).
