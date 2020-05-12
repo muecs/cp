@@ -87,7 +87,7 @@ References
 
 * McCanney, GA. et al: *[Low sulfated heparins target multiple proteins for central nervous system repair.](https://onlinelibrary.wiley.com/doi/full/10.1002/glia.23562)* In Glia, April 2019.
 
-* McCanney, GA. et al: *[The Use of Myelinating Cultures as a Screen of Glycomolecules for CNS Repair.](https://www.mdpi.com/2079-7737/8/3/52) In Biology (Basel), Jun 2019.
+* McCanney, GA. et al: *[The Use of Myelinating Cultures as a Screen of Glycomolecules for CNS Repair.](https://www.mdpi.com/2079-7737/8/3/52)* In Biology (Basel), Jun 2019.
 
 * Thümmler, K. et al: *[Polarizing receptor activation dissociates fibroblast growth factor 2 mediated inhibition of myelination from its neuroprotective potential.](https://actaneurocomms.biomedcentral.com/articles/10.1186/s40478-019-0864-6)* In Acta Neuropathologica Communications, Dec 2019.
 
