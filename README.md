@@ -75,9 +75,21 @@ Image processing using CellProfiler:
 References
 ----------
 
-* Linder, M., Thümmler, K. et al: *[Fibroblast growth factor signalling in multiple sclerosis: inhibition of myelination and induction of pro-inflammatory environment by FGF9](http://brain.oxfordjournals.org/content/early/2015/04/22/brain.awv102.long).* In Brain, April 2015.
+* Lindner, M. et al: *[Myelinating Cultures: An In Vitro Tool to Identify Demyelinating and Axopathic Autoantibodies](https://link.springer.com/protocol/10.1007%2F7651_2014_129).* In Methods Mol Biol., Nov 2014.
+
+* Lindner, M., Thümmler, K. et al: *[Fibroblast growth factor signalling in multiple sclerosis: inhibition of myelination and induction of pro-inflammatory environment by FGF9](http://brain.oxfordjournals.org/content/early/2015/04/22/brain.awv102.long).* In Brain, April 2015.
+
+* Lindsay, SL. et al: *[Comparative miRNA-Based Fingerprinting Reveals Biological Differences in Human Olfactory Mucosa- and Bone-Marrow-Derived Mesenchymal Stromal Cells.](https://www.cell.com/stem-cell-reports/fulltext/S2213-6711(16)30004-2?_returnURL=https%3A%2F%2Flinkinghub.elsevier.com%2Fretrieve%2Fpii%2FS2213671116300042%3Fshowall%3Dtrue)* In Stem Cell Reports, May 2016.
 
 * Cumberworth, SL. et al: *[Zika virus tropism and interactions in myelinating neural cell cultures: CNS cells and myelin are preferentially affected.](https://actaneurocomms.biomedcentral.com/articles/10.1186/s40478-017-0450-8)* In Acta Neuropathologica Communications, June 2017.
+
+* Bijland, S. et al: *[An in vitro model for studying CNS white matter: functional properties and experimental approaches.](https://f1000research.com/articles/8-117/v1)* In F1000Res, Jan 2019.
+
+* McCanney, GA. et al: *[Low sulfated heparins target multiple proteins for central nervous system repair.](https://onlinelibrary.wiley.com/doi/full/10.1002/glia.23562)* In Glia, April 2019.
+
+* McCanney, GA. et al: *[The Use of Myelinating Cultures as a Screen of Glycomolecules for CNS Repair.](https://www.mdpi.com/2079-7737/8/3/52) In Biology (Basel), Jun 2019.
+
+* Thümmler, K. et al: *[Polarizing receptor activation dissociates fibroblast growth factor 2 mediated inhibition of myelination from its neuroprotective potential.](https://actaneurocomms.biomedcentral.com/articles/10.1186/s40478-019-0864-6)* In Acta Neuropathologica Communications, Dec 2019.
 
 License
 -------
