@@ -91,6 +91,10 @@ References
 
 * Thümmler, K. et al: *[Polarizing receptor activation dissociates fibroblast growth factor 2 mediated inhibition of myelination from its neuroprotective potential.](https://actaneurocomms.biomedcentral.com/articles/10.1186/s40478-019-0864-6)* In Acta Neuropathologica Communications, Dec 2019.
 
+* Hayden, L.et al: *[Lipid-specific IgMs induce antiviral responses in the CNS: implications for progressive multifocal leukoencephalopathy in multiple sclerosis.](https://actaneurocomms.biomedcentral.com/articles/10.1186/s40478-020-01011-7)* In Acta Neuropathol Commun, 8(1), 135, August 2020
+
+* Schultz, V. et al: *[Zika Virus Infection Leads to Demyelination and Axonal Injury in Mature CNS Cultures](https://www.mdpi.com/1999-4915/13/1/91)* In Viruses 11;13(1):91, Jan 2021
+
 License
 -------
 
